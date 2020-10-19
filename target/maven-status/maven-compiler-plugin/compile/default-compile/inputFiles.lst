@@ -1,0 +1,9 @@
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/validator/TextDataValidatorService.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/scrapper/ScrappingJob.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/reader/TextFileReader.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/scrapper/HtmlScrappingJob.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/reader/iFileReader.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/validator/DataValidatorService.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/WebCrawlerApp.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/scrapper/HtmlScrapper.java
+/Users/mac/IdeaProjects/WebCrawler/src/main/java/com/web/crawler/parameter/Parameters.java

@@ -1,0 +1,9 @@
+com/web/crawler/reader/iFileReader.class
+com/web/crawler/WebCrawlerApp.class
+com/web/crawler/scrapper/HtmlScrappingJob.class
+com/web/crawler/reader/TextFileReader.class
+com/web/crawler/validator/TextDataValidatorService.class
+com/web/crawler/scrapper/ScrappingJob.class
+com/web/crawler/validator/DataValidatorService.class
+com/web/crawler/parameter/Parameters.class
+com/web/crawler/scrapper/HtmlScrapper.class
