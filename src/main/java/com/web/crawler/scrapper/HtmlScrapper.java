@@ -32,13 +32,17 @@ public class HtmlScrapper {
         if (links.size() > LINK_COLLECTION_LINK) {
             return links;
         }
-        
+    
         String HTMLPage = getStringFromUrl(url);
+        if (HTMLPage.isEmpty()) {
+            return links;
+        }
+    
         Pattern linkPattern = Pattern.compile(LINK_FINDER_REGEX, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
         Matcher pageMatcher = linkPattern.matcher(HTMLPage);
-        
+    
         while (pageMatcher.find()) {
-            
+        
             String linkFromURL = pageMatcher.group(1);
             if (links.contains(linkFromURL) || !urlValidator.isValid(linkFromURL)) {
                 continue;
@@ -56,7 +60,13 @@ public class HtmlScrapper {
     
     public String getStringFromUrl(String url) throws IOException {
         URL siteURL = new URL(url);
-        return inputStreamToString(Objects.requireNonNull(urlToInputStream(siteURL, null)));
+    
+        InputStream inputStream = urlToInputStream(siteURL, null);
+        if (inputStream == null) {
+            return "";
+        }
+    
+        return inputStreamToString(inputStream);
     }
     
     public String inputStreamToString(InputStream inputStream) throws IOException {
