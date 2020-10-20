@@ -23,26 +23,24 @@ public class WebCrawlerApp {
     private static DataValidatorService service;
     private static HtmlScrapper htmlScrapper;
     
-    public WebCrawlerApp() {
-        
-        final UrlValidator urlValidator = new UrlValidator();
-        
-        service = new TextDataValidatorService(urlValidator);
-        htmlScrapper = new HtmlScrapper(urlValidator);
-        
-        LOGGER.info("Initiated the required object instances for the web crawling");
-    }
-    
     
     public static void main(String[] args) throws IOException {
-        
-        new WebCrawlerApp();
+        init();
         
         List<String> urls = service.validateAndRetrieveAllURLs(new File(FILE_LOCATION));
         HtmlScrappingJob job = new HtmlScrappingJob(htmlScrapper);
         
         LOGGER.info("Starting the link scrapping job from the provided URL");
         scrapLinksAndLogParallel(urls, job);
+    }
+    
+    private static void init() {
+        final UrlValidator urlValidator = new UrlValidator();
+        
+        service = new TextDataValidatorService(urlValidator);
+        htmlScrapper = new HtmlScrapper(urlValidator);
+        
+        LOGGER.info("Initiated the required object instances for the web crawling");
     }
     
     private static void scrapLinksAndLogParallel(List<String> urls, HtmlScrappingJob job) {
