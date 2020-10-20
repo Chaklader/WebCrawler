@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -21,7 +20,6 @@ import static com.web.crawler.parameter.Parameters.*;
 public class HtmlScrapper {
     
     private static final Logger LOGGER = Logger.getLogger(HtmlScrapper.class.getName());
-    
     private final UrlValidator urlValidator;
     
     public HtmlScrapper(UrlValidator urlValidator) {
@@ -86,10 +84,6 @@ public class HtmlScrapper {
         InputStream inputStream;
         
         try {
-            
-            if(url.toString().equalsIgnoreCase("https://animals-now.org/double-donation/")){
-                LOGGER.warning("Hello");
-            }
     
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setConnectTimeout(15000);
