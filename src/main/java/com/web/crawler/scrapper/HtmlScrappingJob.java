@@ -23,8 +23,8 @@ public class HtmlScrappingJob implements ScrappingJob {
         scrap(url, new HashSet<>());
     }
     
-    private void scrap(String url, Set<String> l) throws IOException, URISyntaxException {
-        htmlScrapper.scrapLinksByURLFromHTML(url, l, getDomainName(url));
+    private void scrap(String url, Set<String> links) throws IOException, URISyntaxException {
+        htmlScrapper.scrapLinksByURLFromHTML(url, links, getDomainName(url));
     }
     
     private static String getDomainName(String url) throws URISyntaxException {

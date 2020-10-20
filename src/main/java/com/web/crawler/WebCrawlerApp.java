@@ -20,13 +20,25 @@ public class WebCrawlerApp {
     private static final Logger LOGGER = Logger.getLogger(WebCrawlerApp.class.getName());
     private static final String FILE_LOCATION = "src/main/resources/urls.txt";
     
+    private static DataValidatorService service;
+    private static HtmlScrapper htmlScrapper;
+    
+    public WebCrawlerApp() {
+        
+        final UrlValidator urlValidator = new UrlValidator();
+        
+        service = new TextDataValidatorService(urlValidator);
+        htmlScrapper = new HtmlScrapper(urlValidator);
+        
+        LOGGER.info("Initiated the required object instances for the web crawling");
+    }
+    
+    
     public static void main(String[] args) throws IOException {
         
-        UrlValidator urlValidator = new UrlValidator();
-        DataValidatorService service = new TextDataValidatorService(urlValidator);
-        List<String> urls = service.validateAndRetrieveAllURLs(new File(FILE_LOCATION));
+        new WebCrawlerApp();
         
-        HtmlScrapper htmlScrapper = new HtmlScrapper(urlValidator);
+        List<String> urls = service.validateAndRetrieveAllURLs(new File(FILE_LOCATION));
         HtmlScrappingJob job = new HtmlScrappingJob(htmlScrapper);
         
         LOGGER.info("Starting the link scrapping job from the provided URL");
