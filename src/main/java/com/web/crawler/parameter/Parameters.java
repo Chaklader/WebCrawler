@@ -1,7 +1,7 @@
 package com.web.crawler.parameter;
 
 /**
- * @author Chaklader at 19/10/20
+ * @author Chaklader at 15/10/20
  */
 public class Parameters {
     public static final Integer LINK_COLLECTION_LINK = 1000000;
