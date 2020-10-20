@@ -12,13 +12,14 @@ import java.net.URISyntaxException;
 import java.util.*;
 import java.util.logging.Logger;
 
+import static com.web.crawler.parameter.Parameters.FILE_LOCATION;
+
 /**
  * @author Chaklader at 15/10/20
  */
 public class WebCrawlerApp {
     
     private static final Logger LOGGER = Logger.getLogger(WebCrawlerApp.class.getName());
-    private static final String FILE_LOCATION = "src/main/resources/urls.txt";
     
     private static DataValidatorService service;
     private static HtmlScrapper htmlScrapper;
@@ -31,6 +32,7 @@ public class WebCrawlerApp {
         HtmlScrappingJob job = new HtmlScrappingJob(htmlScrapper);
         
         LOGGER.info("Starting the link scrapping job from the provided URL");
+        
         scrapLinksAndLogParallel(urls, job);
     }
     

@@ -27,7 +27,7 @@ public class HtmlScrapper {
     }
     
     public Set<String> scrapLinksByURLFromHTML(String url, Set<String> links, String domain) throws IOException {
-        if (links.size() > LINK_COLLECTION_LINK) {
+        if (links.size() >= LINK_COLLECTION_LINK) {
             return links;
         }
     
