@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -55,7 +56,7 @@ public class HtmlScrapper {
     
     public String getStringFromUrl(String url) throws IOException {
         URL siteURL = new URL(url);
-        return inputStreamToString(urlToInputStream(siteURL, null));
+        return inputStreamToString(Objects.requireNonNull(urlToInputStream(siteURL, null)));
     }
     
     public String inputStreamToString(InputStream inputStream) throws IOException {
@@ -75,6 +76,10 @@ public class HtmlScrapper {
         InputStream inputStream;
         
         try {
+            
+            if(url.toString().equalsIgnoreCase("https://animals-now.org/double-donation/")){
+                LOGGER.warning("Hello");
+            }
     
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setConnectTimeout(15000);
@@ -96,11 +101,12 @@ public class HtmlScrapper {
                     return urlToInputStream(newUrl, args);
                 }
             }
-            
+    
             inputStream = httpURLConnection.getInputStream();
             return inputStream;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            LOGGER.warning("We have Runtime Exception here");
         }
+        return null;
     }
 }
